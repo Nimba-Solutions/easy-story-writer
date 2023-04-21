@@ -1,0 +1,28 @@
+minimum_cumulusci_version: '3.68.1'
+project:
+    name: Easy-Story-Writer
+    package:
+        name: Easy-Story-Writer
+        api_version: '55.0'
+    git:
+        default_branch: 'main'
+        prefix_feature: 'feature/'
+        prefix_beta: 'beta/'
+        prefix_release: 'release/'
+    source_format: sfdx
+
+tasks:
+    robot:
+        options:
+            suites: robot/Easy-Story-Writer/tests
+            options:
+                outputdir: robot/Easy-Story-Writer/results
+
+    robot_testdoc:
+        options:
+            path: robot/Easy-Story-Writer/tests
+            output: robot/Easy-Story-Writer/doc/Easy-Story-Writer_tests.html
+
+    run_tests:
+        options:
+            required_org_code_coverage_percent: 75
