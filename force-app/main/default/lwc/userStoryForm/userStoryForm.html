@@ -1,21 +1,51 @@
 <template>
-	<lightning-card title="Create User Story">
-		<div class="slds-p-around_medium">
-			<div class="sentence">
-				As a
-				<lightning-combobox class="inline-combobox" value={userType} options={userTypeOptions}
-					onchange={handleUserTypeChange} variant="label-hidden"></lightning-combobox>,
-				I want
-				<lightning-textarea class="inline-textbox" value={action} onchange={handleInputChange}
-					data-field="action"></lightning-textarea>
-				so that
-				<lightning-textarea class="inline-textbox" value={description} onchange={handleInputChange}
-					data-field="description"></lightning-textarea>
-			</div>
+	<lightning-card>
+		<div>
+			<!-- User Story -->
+			<h2 class="slds-text-heading_medium slds-p-bottom_medium">User Story</h2>
+			<!-- Row 1 -->
+			<lightning-layout multiple-rows>
+				<lightning-layout-item size="12" small-device-size="2" medium-device-size="2" large-device-size="2" padding="horizontal-small">
+					<div>As a... </div>
+				</lightning-layout-item>
+				<lightning-layout-item size="12" small-device-size="10" medium-device-size="10" large-device-size="10" padding="horizontal-small">
+					<div class="sentence">
+						<lightning-combobox class="inline-combobox" value={userType} options={userTypeOptions}
+							onchange={handleUserTypeChange} variant="label-hidden"></lightning-combobox>
+					</div>
+				</lightning-layout-item>
+			</lightning-layout>
+			<!-- Row 2 -->
+			<lightning-layout multiple-rows>
+				<lightning-layout-item size="12" small-device-size="2" medium-device-size="2" large-device-size="2" padding="horizontal-small">
+					<div class="slds-m-top_large">I want... </div>
+				</lightning-layout-item>
+				<lightning-layout-item size="12" small-device-size="10" medium-device-size="10" large-device-size="10" padding="horizontal-small">
+					<div class="sentence">
+						<lightning-textarea class="inline-textbox" value={action} onchange={handleInputChange} data-field="action">
+						</lightning-textarea>
+					</div>
+				</lightning-layout-item>
+			</lightning-layout>
+			<!-- Row 3 -->
+			<lightning-layout multiple-rows>
+				<lightning-layout-item size="12" small-device-size="2" medium-device-size="2" large-device-size="2" padding="horizontal-small">
+					<div class="slds-m-top_large">So that... </div>
+				</lightning-layout-item>
+				<lightning-layout-item size="12" small-device-size="10" medium-device-size="10" large-device-size="10" padding="horizontal-small">
+					<div class="sentence">
+						<lightning-textarea class="inline-textbox" value={description} onchange={handleInputChange}
+							data-field="description"></lightning-textarea>
+					</div>
+				</lightning-layout-item>
+			</lightning-layout>
+
+			<!-- Acceptance Criteria -->
+			<h2 class="slds-text-heading_medium slds-p-top_medium slds-p-bottom_medium">Acceptance Criteria</h2>
 			<template for:each={acceptanceCriteriaList} for:item="acceptanceCriteria">
 				<div key={acceptanceCriteria}>
 					<div class="acceptance-criteria">
-						<lightning-input placeholder="Acceptance Criteria" value={acceptanceCriteria}
+						<lightning-input class="inline-textinput" placeholder="Acceptance Criteria" value={acceptanceCriteria}
 							onchange={handleAcceptanceCriteriaChange}></lightning-input>
 						<div class="icon-container">
 							<lightning-button-icon icon-name="utility:delete" alternative-text="Remove"
@@ -28,13 +58,17 @@
 					</div>
 				</div>
 			</template>
+			
 			<template if:true={showAddButton}>
 				<div class="button-container">
 					<lightning-button label="Add Acceptance Criteria" onclick={handleAddAcceptanceCriteria}></lightning-button>
 				</div>
 			</template>
-			<lightning-textarea label="Expected Outcomes" value={expectedOutcomes} onchange={handleInputChange}
+
+			<h2 class="slds-text-heading_medium slds-p-top_medium slds-p-bottom_medium">Expected Outcomes</h2>
+			<lightning-textarea value={expectedOutcomes} onchange={handleInputChange}
 				data-field="expectedOutcomes"></lightning-textarea>
+
 			<lightning-button label="Save" onclick={saveUserStory}></lightning-button>
 		</div>
 	</lightning-card>

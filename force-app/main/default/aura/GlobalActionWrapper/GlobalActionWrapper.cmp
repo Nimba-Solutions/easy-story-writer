@@ -1,0 +1,6 @@
+<aura:component implements="force:lightningQuickAction,lightning:hasPageReference,lightning:isUrlAddressable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" 
+                access="global" >
+
+    <aura:handler name="init" value="{!this}" action="{!c.init} "/>
+	<c:EasyStoryWriterWrapper/>
+</aura:component>

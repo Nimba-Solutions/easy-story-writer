@@ -1,4 +1,6 @@
-import { LightningElement, track } from 'lwc';
+import { LightningElement, api, track, wire } from 'lwc';
+import getUserDetails from '@salesforce/apex/UserServices.getUserDetails';
+
 
 export default class UserStoryForm extends LightningElement {
     @track userType;
@@ -6,6 +8,20 @@ export default class UserStoryForm extends LightningElement {
     @track description;
     @track acceptanceCriteriaList = [];
     @track expectedOutcomes;
+    
+    @api pageReference;
+    
+    userStoryDetails;
+
+    async connectedCallback() {
+        try {
+            this.userStoryDetails = await getUserDetails();
+            this.userStoryDetails.userLocation = window.location.href;
+            console.log('User Story Details: ', this.userStoryDetails);
+        } catch (error) {
+            // Handle the error
+        }
+    }
 
     userTypeOptions = [
         { label: 'Customer', value: 'customer' },

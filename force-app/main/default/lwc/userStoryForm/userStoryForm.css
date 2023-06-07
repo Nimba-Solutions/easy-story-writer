@@ -5,14 +5,20 @@
 }
 
 .inline-combobox {
-  width: 150px;
-  margin-right: 2px;
+  width: 500px;
+  margin-right: 5%;
   margin-left: 2px;
 }
 
 .inline-textbox {
-  width: 150px;
-  margin-right: 2px;
+  width: 500px;
+  margin-right: 5%;
+  margin-left: 4px;
+}
+
+.inline-textinput {
+  width: 500px;
+  margin-right: 5%;
   margin-left: 4px;
 }
 
